@@ -1,1 +1,0 @@
-D:\CppProgram\SFMLGame\SFMLGame\Debug\SFMLGame.vcxproj.CopyComplete

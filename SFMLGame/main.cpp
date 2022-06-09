@@ -3,7 +3,7 @@
 int main()
 {
 	Game game;
-	LOG(INFO) << "Game Object create.";
+	std::cout << "Game Object create." << std::endl;
 	game.run();
 
 	return EXIT_SUCCESS;

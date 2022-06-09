@@ -54,6 +54,14 @@ Game::~Game()
 }
 
 // Functions
+
+// Regular
+void Game::endApplication()
+{
+	std::cout << "End Application." << std::endl;
+}
+
+// Update
 void Game::updateDt()
 {
 	/* Updates the dt variable with the time it takes to update and render one frame.*/
@@ -75,9 +83,25 @@ void Game::update()
 	this->updateSFMLEvents();
 
 	if (!this->states.empty())
+	{
 		this->states.top()->update(this->dt);
+
+		if (this->states.top()->getQuit())
+		{
+			this->states.top()->endState();
+			delete this->states.top();
+			this->states.pop();
+		}
+	}
+	// Application End
+	else
+	{
+		this->endApplication();
+		this->window->close();
+	}
 }
 
+// Render
 void Game::render()
 {
 	this->window->clear();
@@ -93,6 +117,7 @@ void Game::render()
 	this->window->display();
 }
 
+// Core
 void Game::run()
 {
 	while (this->window->isOpen())
